@@ -30,6 +30,9 @@ printf "%08d.%08d.%08d.%08d\n" $(d2b $1) $(d2b $2) $(d2b $3) $(d2b $4)
 # fonction qui génère un fichier exécutable portant le nom $1 puis lance l'édition sinon ouvre le fichier déjà existant
 x() { [ -f $1 ] && nano -l +$(wc -l<a),$(tail -1 a| wc -c) $1 || echo '#!/bin/bash' > $1 && chmod +x $1 && nano -l +2 $1 ; }
 
+# fonction qui génère un fichier exécutable Python3 portant le nom $1 puis lance l'édition sinon ouvre le fichier déjà existant
+xp() { [ -f $1 ] && nano -l +$(wc -l<a),$(tail -1 a| wc -c) $1 || echo '#!/usr/bin/env python3' > $1 && chmod +x $1 && nano -l +2 $1 ; }
+
 # en MINUSCULE
 MIN() { echo ${@,,} ; }
 
