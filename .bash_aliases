@@ -33,6 +33,9 @@ x() { [ -f $1 ] && nano -l +$(wc -l<a),$(tail -1 a| wc -c) $1 || echo '#!/bin/ba
 # fonction qui génère un fichier exécutable Python3 portant le nom $1 puis lance l'édition sinon ouvre le fichier déjà existant
 xp() { [ -f $1 ] && nano -l +$(wc -l<a),$(tail -1 a| wc -c) $1 || echo '#!/usr/bin/env python3' > $1 && chmod +x $1 && nano -l +2 $1 ; }
 
+# Trouver le paquet qui a installé une commande et la date d’installation de ce paquet
+paquetinfo() { which "$@"   | xargs -r readlink -f | xargs -r dpkg -S && zgrep -h "installed " /var/log/dpkg.log* | sort | grep "$@" ;}
+
 # en MINUSCULE
 MIN() { echo ${@,,} ; }
 
