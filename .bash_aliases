@@ -30,19 +30,19 @@ printf "%08d.%08d.%08d.%08d\n" $(d2b $1) $(d2b $2) $(d2b $3) $(d2b $4)
 # fonction qui génère un fichier exécutable portant le nom $1 puis lance l'édition sinon ouvre le fichier déjà existant
 x() { [ -f $1 ] && nano -l +$(wc -l<a),$(tail -1 a| wc -c) $1 || echo '#!/bin/bash' > $1 && chmod +x $1 && nano -l +2 $1 ; }
 
-# fonction qui génère un fichier exécutable Python3 portant le nom $1 puis lance l'édition sinon ouvre le fichier déjà existant
+# fonction qui génère un fichier exécutable python3 portant le nom $1 puis lance l'édition sinon ouvre le fichier déjà existant
 xp() { [ -f $1 ] && nano -l +$(wc -l<a),$(tail -1 a| wc -c) $1 || echo '#!/usr/bin/env python3' > $1 && chmod +x $1 && nano -l +2 $1 ; }
 
 # Trouver le paquet qui a installé une commande et la date d’installation de ce paquet
 paquetinfo() { which "$@"   | xargs -r readlink -f | xargs -r dpkg -S && zgrep -h "installed " /var/log/dpkg.log* | sort | grep "$@" ;}
 
-# en MINUSCULE
+# Converti une chaine en MINUSCULE
 MIN() { echo ${@,,} ; }
 
-# en MAJUSCULE
+# Converti une chaine en MAJUSCULE
 MAJ() { echo ${@^^} ; }
 
-# quel âge a milo ?
+# quel âge a Milo ?
 milo()  { cat /tmp/milo2ascii && echo Milo a $(($((`date +%s`-`date +%s --date 08/21/2019`))/86400)) jours | figlet -f script ; }
 
 # scraping de gratilog.net 
@@ -82,3 +82,4 @@ alias hg="history|grep"
 alias maj='apt update -y && apt upgrade -y'
 alias l2='ls -lAtr'
 alias tv='tidy-viewer' #visionneuse de csv
+alias fav='bat /root/.bash_aliases' #affiche mes commandes et alias
