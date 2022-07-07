@@ -42,6 +42,9 @@ MIN() { echo ${@,,} ; }
 # Converti une chaine en MAJUSCULE
 MAJ() { echo ${@^^} ; }
 
+# Converti une chaine en MINUSCULE puis met la 1ere lettre en MAJUSCULE
+CAP() { temp=$(MIN "${@}") && echo "${temp^}" ; }
+
 # quel âge a Milo ?
 milo()  { cat /tmp/milo2ascii && echo Milo a $(($((`date +%s`-`date +%s --date 08/21/2019`))/86400)) jours | figlet -f script ; }
 
