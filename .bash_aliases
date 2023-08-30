@@ -97,8 +97,5 @@ alias tv='tidy-viewer' #visionneuse de csv
 alias fav='bat /root/.bash_aliases' #affiche mes commandes et alias
 alias compare='colordiff -yW"`tput cols`"' 
 alias pastebin="curl -F 'sprunge=<-' http://sprunge.us <<<"
-<<<<<<< HEAD
 alias uc='(read chaine; curl -s --data "text=$chaine" https://file.io | jq -r .link ) <<< '                                         
 alias uf='(read fichier; curl -sF "file=@$fichier" https://file.io | jq -r .link ) <<< '
-=======
->>>>>>> fb616c7b804365bd1d1343b4b061d993c5024d00
