@@ -89,13 +89,15 @@ export PATH=$PATH:/tmp
 
 
 # --- ALIAS ---
-alias h="history"
-alias hg="history|grep"
-alias maj='apt update  && apt full-upgrade -y && apt clean && apt autoremove --purge -y'
-alias l2='ls -lAtr'
-alias tv='tidy-viewer' #visionneuse de csv
-alias fav='bat /root/.bash_aliases' #affiche mes commandes et alias
-alias compare='colordiff -yW"`tput cols`"' 
-alias pastebin="curl -F 'sprunge=<-' http://sprunge.us <<<"
-alias uc='(read chaine; curl -s --data "text=$chaine" https://file.io | jq -r .link ) <<< '                                         
-alias uf='(read fichier; curl -sF "file=@$fichier" https://file.io | jq -r .link ) <<< '
+alias h="history"										#history
+alias hg="history|grep"										#recherche un mot dans l'historique des commandes
+alias maj='apt update  && apt full-upgrade -y && apt clean && apt autoremove --purge -y'	#mise a jour total et nettoyage des paquets + noyau
+alias l2='ls -lAtr'										#liste tous les fichier du plus ancien au plus récent
+alias x2l='x2 $(find -maxdepth 1 -type f -exec ls -rt {} \+ | head -1)'				#edite le dernier fichier du repertoire en cours
+alias tv='tidy-viewer'										#visionneuse de csv
+alias fav='bat /root/.bash_aliases' 								#affiche mes commandes et alias
+alias compare='colordiff -yW"`tput cols`"' 							#comparaison en couleur de 2 fichiers
+alias pastebin="curl -F 'sprunge=<-' http://sprunge.us <<<"					#créé un lien de téléchargement d'un pastebin, USAGE: pastebin $(cat fichier.txt)
+alias uc='(read chaine; curl -s --data "text=$chaine" https://file.io | jq -r .link ) <<< '	#créé un lien de téléchargement d'une chaine de caractère                                         
+alias uf='(read fichier; curl -sF "file=@$fichier" https://file.io | jq -r .link ) <<< '	#créé un lien de téléchargement d'un fichier
+alias ufx='(read fichier; curl -sF "file=@$fichier" https://file.io | jq -r .link| sed -r -e  "s/.*/curl -sL  & -o  /"  -ze  "s/\n// "; echo "${fichier##*/} ; echo ${fichier##*/} | xargs -p chmod +x " ) <<<' #idem version full
