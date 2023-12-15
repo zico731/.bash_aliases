@@ -72,9 +72,11 @@ sms_info() { msg=$(echo "$HOSTNAME : $1"|sed 's/\s/%20/g') ; user=18924628 ; pas
 # transferer un fichier en ligne afin de le récupérer sur une autre machine --> renvoie une adresse de recuperation (USAGE: upload /path/of/file)
 upload() { curl --upload-file "$1" "https://transfer.sh/$1"; echo ; }
 
-# récupérartion d'un fichier stocké en ligne grace a son url généré, (USAGE: download http://url/of/tranfert.sh [filename])
+# récupération d'un fichier stocké en ligne grace a son url généré, (USAGE: download http://url/of/tranfert.sh [filename])
 download() { curl $1 -o ${2:-$(basename $1)} ;}
 
+# donne les exemples les plus courant d'une commande
+tldr2() { curl cht.sh/$1 ;}
 
 # --- HISTORIQUE HEURODATE ---
 EXTENDED_HISTORY=ON
@@ -101,3 +103,4 @@ alias pastebin="curl -F 'sprunge=<-' http://sprunge.us <<<"					#créé un lien 
 alias uc='(read chaine; curl -s --data "text=$chaine" https://file.io | jq -r .link ) <<< '	#créé un lien de téléchargement d'une chaine de caractère                                         
 alias uf='(read fichier; curl -sF "file=@$fichier" https://file.io | jq -r .link ) <<< '	#créé un lien de téléchargement d'un fichier
 alias ufx='(read fichier; curl -sF "file=@$fichier" https://file.io | jq -r .link| sed -r -e  "s/.*/curl -sL  & -o  /"  -ze  "s/\n// "; echo "${fichier##*/} ; echo ${fichier##*/} | xargs -p chmod +x " ) <<<' #idem version full
+
