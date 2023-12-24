@@ -75,6 +75,9 @@ upload() { curl --upload-file "$1" "https://transfer.sh/$1"; echo ; }
 # récupération d'un fichier stocké en ligne grace a son url généré, (USAGE: download http://url/of/tranfert.sh [filename])
 download() { curl $1 -o ${2:-$(basename $1)} ;}
 
+# tldr en Francais si possible
+tldr1() { tldr "$1" -L fr 2>/dev/null || tldr "$1" ;}
+
 # donne les exemples les plus courant d'une commande
 tldr2() { curl cht.sh/$1 ;}
 
