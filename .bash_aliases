@@ -91,9 +91,10 @@ shopt -s histappend
 
 # --- PATH ---
 export PATH=$PATH:/tmp
-
+export PATH=$PATH:/root/.cargo/bin
 
 # --- ALIAS ---
+alias copy="tee >(xclip -r -selection clipboard)"						#affiche la sortie d'une commande sur le terminal + presse-passier EXEMPLE: ls | copy
 alias h="history"										#history
 alias hg="history|grep"										#recherche un mot dans l'historique des commandes
 alias maj='apt update  && apt full-upgrade -y && apt clean && apt autoremove --purge -y'	#mise a jour total et nettoyage des paquets + noyau
@@ -107,3 +108,4 @@ alias uc='(read chaine; curl -s --data "text=$chaine" https://file.io | jq -r .l
 alias uf='(read fichier; curl -sF "file=@$fichier" https://file.io | jq -r .link ) <<< '	#créé un lien de téléchargement d'un fichier
 alias ufx='(read fichier; curl -sF "file=@$fichier" https://file.io | jq -r .link| sed -r -e  "s/.*/curl -sL  & -o  /"  -ze  "s/\n// "; echo "${fichier##*/} ; echo ${fichier##*/} | xargs -p chmod +x " ) <<<' #idem version full
 
+²
