@@ -107,5 +107,3 @@ alias pastebin="curl -F 'sprunge=<-' http://sprunge.us <<<"					#créé un lien 
 alias uc='(read chaine; curl -s --data "text=$chaine" https://file.io | jq -r .link ) <<< '	#créé un lien de téléchargement d'une chaine de caractère                                         
 alias uf='(read fichier; curl -sF "file=@$fichier" https://file.io | jq -r .link ) <<< '	#créé un lien de téléchargement d'un fichier
 alias ufx='(read fichier; curl -sF "file=@$fichier" https://file.io | jq -r .link| sed -r -e  "s/.*/curl -sL  & -o  /"  -ze  "s/\n// "; echo "${fichier##*/} ; echo ${fichier##*/} | xargs -p chmod +x " ) <<<' #idem version full
-
-²
