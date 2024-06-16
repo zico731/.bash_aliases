@@ -81,6 +81,9 @@ tldr1() { tldr "$1" -L fr 2>/dev/null || tldr "$1" ;}
 # donne les exemples les plus courant d'une commande
 tldr2() { curl cht.sh/$1 ;}
 
+# filtre toutes les commandes prise charge par TLDR
+tldri() { eval "cmd=$(tldr --list|tr '[],' '() ')" ; echo ${cmd[@]}| tr ' ' '\n'| sort| fzf --preview "tldr {}" --reverse --height=70% --inline-info -e --prompt "Entrez la commande > "|xargs tldr ;}
+
 # --- HISTORIQUE HEURODATE ---
 EXTENDED_HISTORY=ON
 export EXTENDED_HISTORY
