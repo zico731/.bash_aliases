@@ -94,7 +94,7 @@ shopt -s histappend
 
 # --- PATH ---
 export PATH=$PATH:/tmp
-export PATH=$PATH:/root/.cargo/bin
+#export PATH=$PATH:/root/.cargo/bin
 
 # --- ALIAS ---
 alias copy="tee >(xclip -r -selection clipboard)"						#affiche la sortie d'une commande sur le terminal + presse-passier EXEMPLE: ls | copy
