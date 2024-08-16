@@ -4,7 +4,7 @@
 
 # Hexadécimal vers décimal
 h2d(){
-  echo "ibase=16; $@" | tr -s ' ' ';' | bc
+  echo "ibase=16; ${@^^}" | tr -s ' ' ';' | bc
 }
 # Décimal vers hexadécimal
 d2h(){
