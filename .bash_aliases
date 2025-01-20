@@ -21,10 +21,15 @@ d2b(){
  echo "obase=2; $@" | tr -s ' ' ';' | bc
 }
 
-#  ipv4 en ip_binaire formaté 00000000.00000000.00000000.00000000
+# ipv4 en ip_binaire formaté 00000000.00000000.00000000.00000000
 ipd2b(){
 IFS="."; set --  $@
 printf "%08d.%08d.%08d.%08d\n" $(d2b $1) $(d2b $2) $(d2b $3) $(d2b $4)
+}
+
+# convertir une chaine de caractere en rot13
+rot_13() {
+    echo "$1" | tr 'A-Za-z' 'N-ZA-Mn-za-m'
 }
 
 # fonction qui génère un fichier exécutable portant le nom $1 puis lance l'édition sinon ouvre le fichier déjà existant
